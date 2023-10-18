@@ -60,15 +60,22 @@ foreach (string name in studentNames)
         studentScores = loganScores;
 
     int sumAssignmentScores = 0;
-    
+
     decimal currentStudentGrade = 0;
 
     int gradedAssignments = 0;
 
-    int sumExamScores =0; //new
+    int sumExamScores = 0; //new
 
-    int sumExtraCredit =0; //new
+    int sumExtraCredit = 0; //new
 
+    decimal currentStudentExamScore = 0;
+
+    decimal currentStudentExtraCredit = 0;
+
+    int sumAverageScores = 0;
+
+    decimal currentStudentAverageScore = 0;
     /* 
     the inner foreach loop sums assignment scores
     extra credit assignments are worth 10% of an exam score
@@ -78,12 +85,24 @@ foreach (string name in studentNames)
         gradedAssignments += 1;
 
         if (gradedAssignments <= examAssignments)
+        {
             sumAssignmentScores += score;
+            sumExamScores += score;
+            sumAverageScores += score;
+        }
+
         else
+        {
             sumAssignmentScores += score / 10;
+            sumExtraCredit += score /10;
+        }
     }
 
     currentStudentGrade = (decimal)(sumAssignmentScores) / examAssignments;
+    currentStudentExamScore = (decimal)(sumExamScores) / examAssignments;
+    currentStudentExtraCredit = (decimal)sumExtraCredit / examAssignments;
+    currentStudentAverageScore = (decimal)sumAverageScores / examAssignments;
+    
 
     if (currentStudentGrade >= 97)
         currentStudentLetterGrade = "A+";
@@ -126,11 +145,10 @@ foreach (string name in studentNames)
 
     // Student         Grade
     // Sophia:         92.2    A-
-    
-    Console.WriteLine($"{currentStudent}\t\t{sumExamScores}\t\t{currentStudentGrade}\t{currentStudentLetterGrade}\t{sumExtraCredit} ({sumExtraCredit} pts)");
+
+    Console.WriteLine($"{currentStudent}\t\t{currentStudentExamScore}\t\t{currentStudentGrade}\t{currentStudentLetterGrade}\t{currentStudentAverageScore} ({currentStudentExtraCredit} pts)");
 }
 
 // required for running in VS Code (keeps the Output windows open to view results)
 Console.WriteLine("\n\rPress the Enter key to continue");
 Console.ReadLine();
-//edited
