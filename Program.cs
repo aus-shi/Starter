@@ -18,7 +18,9 @@ This C# console application is designed to:
     Emma:           85.6    B
     Logan:          91.2    A-
 */
-int examAssignments = 5;
+const int examAssignments = 5;
+
+
 
 string[] studentNames = new string[] { "Sophia", "Andrew", "Emma", "Logan" };
 
@@ -94,7 +96,8 @@ foreach (string name in studentNames)
         else
         {
             sumAssignmentScores += score / 10;
-            sumExtraCredit += score /10;
+            sumExtraCredit += score / 10;
+            // sumAverageScores += score;
         }
     }
 
@@ -102,7 +105,7 @@ foreach (string name in studentNames)
     currentStudentExamScore = (decimal)(sumExamScores) / examAssignments;
     currentStudentExtraCredit = (decimal)sumExtraCredit / examAssignments;
     currentStudentAverageScore = (decimal)sumAverageScores / examAssignments;
-    
+
 
     if (currentStudentGrade >= 97)
         currentStudentLetterGrade = "A+";
